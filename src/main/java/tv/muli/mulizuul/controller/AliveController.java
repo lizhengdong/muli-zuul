@@ -24,4 +24,9 @@ public class AliveController {
     public String name() {
         return environment.getProperty("spring.application.name") + ":" + environment.getProperty("spring.profiles.active");
     }
+
+    @RequestMapping("/")
+    public String index() {
+        return "muli zuul index.";
+    }
 }
