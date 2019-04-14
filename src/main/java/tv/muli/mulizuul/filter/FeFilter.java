@@ -37,12 +37,14 @@ public class FeFilter extends ZuulFilter {
         String requestUri = httpServletRequest.getRequestURI();
         if (RequestConstant.INDEX_URI.equals(requestUri)) {
             // 如果是访问首页，则判断UA跳转PC或Mobile
+            String host = httpServletRequest.getServerName();
+            int port = httpServletRequest.getServerPort();
             requestContext.setSendZuulResponse(false);
             String userAgent = httpServletRequest.getHeader("user-agent").toLowerCase();
-            String redirect = httpServletRequest.getScheme() + "://" + RequestConstant.HOST_PC;
+            String redirect = httpServletRequest.getScheme() + "://" + host + ":" + port + RequestConstant.PC_PREFIX;
             if (userAgent.contains(RequestConstant.UA_WEIXIN) || userAgent.contains(RequestConstant.UA_IPHONE)
                     || userAgent.contains(RequestConstant.UA_ANDROID) || userAgent.contains(RequestConstant.UA_IPAD)) {
-                redirect = httpServletRequest.getScheme() + "://" + RequestConstant.HOST_MOBILE;
+                redirect = httpServletRequest.getScheme() + "://" + host + ":" + port + RequestConstant.MOBILE_PREFIX;
             }
             try {
                 httpServletResponse.setStatus(HttpStatus.SC_MOVED_PERMANENTLY);

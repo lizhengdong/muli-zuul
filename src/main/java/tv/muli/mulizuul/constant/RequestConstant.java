@@ -7,7 +7,7 @@ public interface RequestConstant {
     String UA_IPHONE = "iphone";
     String UA_ANDROID = "android";
     String UA_IPAD = "ipad";
-    String HOST_PC = "pc.muli.tv";
-    String HOST_MOBILE = "m.muli.tv";
+    String PC_PREFIX = "/pc-fe";
+    String MOBILE_PREFIX = "/m-fe";
 
 }
