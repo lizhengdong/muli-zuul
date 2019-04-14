@@ -1,6 +1,7 @@
 package tv.muli.mulizuul.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019-03-20
  */
 @RestController
+@RefreshScope
 public class AliveController {
 
     @Autowired
@@ -29,4 +31,10 @@ public class AliveController {
     public String index() {
         return "muli zuul index.";
     }
+
+    @RequestMapping("/env")
+    public String env() {
+        return environment.getProperty("desc", "desc default");
+    }
+
 }
