@@ -16,8 +16,8 @@ public class MuliZuulApplication {
         SpringApplication.run(MuliZuulApplication.class, args);
     }
 
-    @Bean
-    public FeFilter feFilter() {
-        return new FeFilter();
-    }
+//    @Bean
+//    public FeFilter feFilter() {
+//        return new FeFilter();
+//    }
 }
